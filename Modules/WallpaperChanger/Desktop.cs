@@ -185,9 +185,10 @@ namespace DMT.Modules.WallpaperChanger
 					if (sourceImage != null && sourceImage.Image != null)
 					{
 						string monitor2K = "False";
-						if (_imageRepository.DataSource[0].Config.TryGetValue("monitor2K", out monitor2K) && monitor2K == "True")
+						Size optimumSize = compositor.AllScreens[i].ScreenRect.Size;
+						IImageProvider provider = _imageRepository.GetProvider(optimumSize, i);
+						if (provider.Config.TryGetValue("monitor2K", out monitor2K) && monitor2K == "True")
                         {
-							Size optimumSize = compositor.AllScreens[i].ScreenRect.Size;
 							if (optimumSize.Width > 2000)
 							{
 								ProviderImage sourceImage2 = imageFetcher.GetRandomImageForScreen(compositor, i);

@@ -89,6 +89,18 @@ namespace DMT.Modules.WallpaperChanger
 		/// <returns>Random image, or null if unable to return image</returns>
 		public ProviderImage GetRandomImage(Size optimumSize, int screenIndex)
 		{
+			IImageProvider provider = GetProvider(optimumSize, screenIndex);
+			if (provider != null)
+            {
+				return GetRandomImageFromProvider(optimumSize, screenIndex, provider);
+			}
+
+			// no image found
+			return null;
+		}
+
+		public IImageProvider GetProvider(Size optimumSize, int screenIndex)
+		{
 			// first choose a provider
 			int totalWeight = 0;
 			foreach (IImageProvider provider in _providers)
@@ -116,9 +128,7 @@ namespace DMT.Modules.WallpaperChanger
 						index -= weight;
 						if (index < 0)
 						{
-							// use this provider
-							//return provider.GetRandomImage(optimumSize);
-							return GetRandomImageFromProvider(optimumSize, screenIndex, provider);
+							return provider;
 						}
 					}
 				}

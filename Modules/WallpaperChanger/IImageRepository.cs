@@ -51,5 +51,7 @@ namespace DMT.Modules.WallpaperChanger
 		/// <param name="screenIndex">Screen index image is for</param>
 		/// <returns>Random image, or null if unable to return image</returns>
 		ProviderImage GetRandomImage(Size optimumSize, int screenIndex);
+
+		IImageProvider GetProvider(Size optimumSize, int screenIndex);
 	}
 }
