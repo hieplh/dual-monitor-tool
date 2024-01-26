@@ -1,0 +1,840 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B8377ACA-52D2-4B1D-887C-D7102AA859C6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DMT</RootNamespace>
+    <AssemblyName>DMT</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>DMT.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppForm.Designer.cs">
+      <DependentUpon>AppForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsoleApplication.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="Library\Command\CommandMessaging.cs" />
+    <Compile Include="Library\Command\MagicCommand.cs" />
+    <Compile Include="Library\Environment\ILocalEnvironment.cs" />
+    <Compile Include="Library\Environment\LocalEnvironment.cs" />
+    <Compile Include="Library\Environment\DmtRegistry.cs" />
+    <Compile Include="Library\Environment\Monitor.cs" />
+    <Compile Include="Library\Environment\Monitors.cs" />
+    <Compile Include="Library\Extensions\RectangeExtensions.cs" />
+    <Compile Include="Library\GuiUtils\MonitorPreviewHelper.cs" />
+    <Compile Include="Library\GuiUtils\MsgDlg.cs" />
+    <Compile Include="Library\GuiUtils\FileSelectionHelper.cs" />
+    <Compile Include="Library\HotKeys\HotKey.cs" />
+    <Compile Include="Library\HotKeys\HotKeyController.cs" />
+    <Compile Include="Library\HotKeys\HotKeyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Library\HotKeys\HotKeyForm.Designer.cs">
+      <DependentUpon>HotKeyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Library\HotKeys\HotKeyPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Library\HotKeys\HotKeyPanel.Designer.cs">
+      <DependentUpon>HotKeyPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Library\HotKeys\HotKeyRepository.cs" />
+    <Compile Include="Library\HotKeys\IHotKeyService.cs" />
+    <Compile Include="Library\HotKeys\KeyCombo.cs" />
+    <Compile Include="Library\HotKeys\KeyComboPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Library\HotKeys\KeyComboPanel.Designer.cs">
+      <DependentUpon>KeyComboPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Library\HotKeys\ScrollableHotKeysPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Library\HotKeys\ScrollableHotKeysPanel.Designer.cs">
+      <DependentUpon>ScrollableHotKeysPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Library\HotKeys\VirtualKey.cs" />
+    <Compile Include="Library\Environment\OsHelper.cs" />
+    <Compile Include="Library\Binding\PropertyComparer.cs" />
+    <Compile Include="Library\Html\FakeRequester.cs" />
+    <Compile Include="Library\Html\HtmlElement.cs" />
+    <Compile Include="Library\Html\HtmlReader.cs" />
+    <Compile Include="Library\Html\HttpConnection.cs" />
+    <Compile Include="Library\Html\HttpConnectionManager.cs" />
+    <Compile Include="Library\Html\HttpHelper.cs" />
+    <Compile Include="Library\Html\HttpRequester.cs" />
+    <Compile Include="Library\Html\HttpResponseData.cs" />
+    <Compile Include="Library\Html\IHttpConnectionManager.cs" />
+    <Compile Include="Library\Html\IHttpRequester.cs" />
+    <Compile Include="Library\Html\NetHelper.cs" />
+    <Compile Include="Library\Logging\ILogger.cs" />
+    <Compile Include="Library\Logging\Logger.cs" />
+    <Compile Include="Library\PInvoke\ActiveDesktop.cs" />
+    <Compile Include="Library\Settings\StringSetting.cs" />
+    <Compile Include="Library\Transform\ScaleHelper.cs" />
+    <Compile Include="Library\Utils\DirectoryScanner.cs" />
+    <Compile Include="Library\Utils\ImageExifExtensions.cs" />
+    <Compile Include="Library\Utils\LatestVersion.cs" />
+    <Compile Include="Library\Utils\LatestVersionFile.cs" />
+    <Compile Include="Library\Utils\RNG.cs" />
+    <Compile Include="Library\Utils\SafeFileWriter.cs" />
+    <Compile Include="Library\Transform\Scaler.cs" />
+    <Compile Include="Library\GuiUtils\ScreenHelper.cs" />
+    <Compile Include="Library\Settings\BoolSetting.cs" />
+    <Compile Include="Library\Settings\IntSetting.cs" />
+    <Compile Include="Library\Settings\UIntSetting.cs" />
+    <Compile Include="Library\Binding\SortableBindingList.cs" />
+    <Compile Include="Library\Transform\ScreenMapping.cs" />
+    <Compile Include="Library\WallpaperPlugin\BaseProvider.cs" />
+    <Compile Include="Library\WallpaperPlugin\IDWC_Plugin.cs" />
+    <Compile Include="Library\WallpaperPlugin\IImageProvider.cs" />
+    <Compile Include="Library\WallpaperPlugin\ProviderHelper.cs" />
+    <Compile Include="Library\Wallpaper\WallpaperImageFormat.cs" />
+    <Compile Include="Library\Wallpaper\ImageFitter.cs" />
+    <Compile Include="Library\Wallpaper\IWallpaperCompositor.cs" />
+    <Compile Include="Library\Wallpaper\IWallpaperCompositorFactory.cs" />
+    <Compile Include="Library\Wallpaper\PositionTracker.cs" />
+    <Compile Include="Library\Wallpaper\PositionTrackerKey.cs" />
+    <Compile Include="Library\Wallpaper\PositionTrackerRepository.cs" />
+    <Compile Include="Library\Wallpaper\WallpaperCompositor.cs" />
+    <Compile Include="Library\Wallpaper\WallpaperCompositorFactory.cs" />
+    <Compile Include="Library\Wallpaper\WindowsWallpaper.cs" />
+    <Compile Include="Modules\Command.cs" />
+    <Compile Include="Modules\Cursor\CursorPrimaryOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Cursor\CursorPrimaryOptionsPanel.Designer.cs">
+      <DependentUpon>CursorPrimaryOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Cursor\CursorDeadSpaceOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Cursor\CursorDeadSpaceOptionsPanel.Designer.cs">
+      <DependentUpon>CursorDeadSpaceOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Cursor\CursorStickyOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Cursor\CursorStickyOptionsPanel.Designer.cs">
+      <DependentUpon>CursorStickyOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\General\EditNumericValueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\General\EditNumericValueForm.Designer.cs">
+      <DependentUpon>EditNumericValueForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\General\CheckUpdatesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\General\CheckUpdatesForm.Designer.cs">
+      <DependentUpon>CheckUpdatesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\General\DisplayDevice.cs" />
+    <Compile Include="Modules\General\DisplayDevices.cs" />
+    <Compile Include="Modules\General\GeneralMonitorOrderingOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\General\GeneralMonitorOrderingOptionsPanel.Designer.cs">
+      <DependentUpon>GeneralMonitorOrderingOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\General\GeneralMonitorsOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\General\GeneralMonitorsOptionsPanel.Designer.cs">
+      <DependentUpon>GeneralMonitorsOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\General\MonitorProperties.cs" />
+    <Compile Include="Modules\General\NativeDisplayHelper.cs" />
+    <Compile Include="Modules\General\NativeDisplayMethods.cs" />
+    <Compile Include="Modules\General\NumericRange.cs" />
+    <Compile Include="Modules\ICommandRunner.cs" />
+    <Compile Include="Modules\Launcher\InternalCommandForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Launcher\InternalCommandForm.Designer.cs">
+      <DependentUpon>InternalCommandForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\ISdaGenerator.cs" />
+    <Compile Include="Modules\SwapScreen\ScrollableUdasPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\ScrollableUdasPanel.Designer.cs">
+      <DependentUpon>ScrollableUdasPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\SdaController.cs" />
+    <Compile Include="Modules\SwapScreen\SdaGeneratorOld.cs" />
+    <Compile Include="Modules\SwapScreen\SdaGeneratorNumPad.cs" />
+    <Compile Include="Modules\SwapScreen\SwapScreenSdaOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\SwapScreenSdaOptionsPanel.Designer.cs">
+      <DependentUpon>SwapScreenSdaOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Desktop.cs" />
+    <Compile Include="Library\Wallpaper\StretchType.cs" />
+    <Compile Include="Library\Wallpaper\SwitchType.cs" />
+    <Compile Include="Library\PInvoke\NativeMethods.cs" />
+    <Compile Include="Library\GuiUtils\WindowPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\Cursor\CursorBarrier.cs" />
+    <Compile Include="Modules\Cursor\CursorBarrierLower.cs" />
+    <Compile Include="Modules\Cursor\CursorBarrierUpper.cs" />
+    <Compile Include="Modules\Cursor\CursorModule.cs" />
+    <Compile Include="Modules\Cursor\CursorGeneralOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Cursor\CursorGeneralOptionsPanel.Designer.cs">
+      <DependentUpon>CursorGeneralOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Cursor\CursorRootOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Cursor\CursorRootOptionsPanel.Designer.cs">
+      <DependentUpon>CursorRootOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Environment\AutoStart.cs" />
+    <Compile Include="Modules\General\GeneralModule.cs" />
+    <Compile Include="Modules\General\GeneralOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\General\GeneralOptionsPanel.Designer.cs">
+      <DependentUpon>GeneralOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Utils\StringUtils.cs" />
+    <Compile Include="Modules\General\GeneralRootOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\General\GeneralRootOptionsPanel.Designer.cs">
+      <DependentUpon>GeneralRootOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\IModuleService.cs" />
+    <Compile Include="Modules\Launcher\EntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Launcher\EntryForm.Designer.cs">
+      <DependentUpon>EntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Launcher\LauncherImportOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Launcher\LauncherImportOptionsPanel.Designer.cs">
+      <DependentUpon>LauncherImportOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Launcher\LauncherHotKeysOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Launcher\LauncherHotKeysOptionsPanel.Designer.cs">
+      <DependentUpon>LauncherHotKeysOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Launcher\LauncheGeneralOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Launcher\LauncheGeneralOptionsPanel.Designer.cs">
+      <DependentUpon>LauncheGeneralOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Launcher\LauncherMagicWordsOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Launcher\LauncherMagicWordsOptionsPanel.Designer.cs">
+      <DependentUpon>LauncherMagicWordsOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Launcher\LauncherModule.cs" />
+    <Compile Include="Modules\Launcher\LauncherRootOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Launcher\LauncherRootOptionsPanel.Designer.cs">
+      <DependentUpon>LauncherRootOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Launcher\MagicWord.cs" />
+    <Compile Include="Modules\Launcher\MagicWordExecutable.cs" />
+    <Compile Include="Modules\Launcher\MagicWordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Launcher\MagicWordForm.Designer.cs">
+      <DependentUpon>MagicWordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Launcher\MagicWordListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\Launcher\MagicWords.cs" />
+    <Compile Include="Modules\Launcher\ParameterInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Launcher\ParameterInputForm.Designer.cs">
+      <DependentUpon>ParameterInputForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Launcher\ParameterMap.cs" />
+    <Compile Include="Modules\Launcher\QrsImporter.cs" />
+    <Compile Include="Modules\Launcher\StartupHandler.cs" />
+    <Compile Include="Modules\Launcher\StartupPosition.cs" />
+    <Compile Include="Modules\Launcher\StartupPositionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Launcher\StartupPositionControl.Designer.cs">
+      <DependentUpon>StartupPositionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Launcher\StartupProcess.cs" />
+    <Compile Include="Modules\Launcher\XmlImporter.cs" />
+    <Compile Include="Modules\Module.cs" />
+    <Compile Include="Modules\ModuleOptionNode.cs" />
+    <Compile Include="Modules\ModuleOptionNodeBranch.cs" />
+    <Compile Include="Modules\ModuleOptionNodeLeaf.cs" />
+    <Compile Include="Modules\ModuleRepository.cs" />
+    <Compile Include="Modules\Snap\Snap.cs" />
+    <Compile Include="Modules\Snap\SnapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Snap\SnapForm.Designer.cs">
+      <DependentUpon>SnapForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Snap\SnapHistory.cs" />
+    <Compile Include="Modules\Snap\SnapMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\Snap\SnapModule.cs" />
+    <Compile Include="Modules\Snap\SnapRootOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Snap\SnapRootOptionsPanel.Designer.cs">
+      <DependentUpon>SnapRootOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Snap\SnapGeneralOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Snap\SnapGeneralOptionsPanel.Designer.cs">
+      <DependentUpon>SnapGeneralOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\SwapScreenActiveOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\SwapScreenActiveOptionsPanel.Designer.cs">
+      <DependentUpon>SwapScreenActiveOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\SwapScreenModule.cs" />
+    <Compile Include="Modules\SwapScreen\SwapScreenRootOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\SwapScreenRootOptionsPanel.Designer.cs">
+      <DependentUpon>SwapScreenRootOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\SwapScreenOtherOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\SwapScreenOtherOptionsPanel.Designer.cs">
+      <DependentUpon>SwapScreenOtherOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\SwapScreenUdaOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\SwapScreenUdaOptionsPanel.Designer.cs">
+      <DependentUpon>SwapScreenUdaOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\UdaController.cs" />
+    <Compile Include="Modules\SwapScreen\UdaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\UdaForm.Designer.cs">
+      <DependentUpon>UdaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\UdaPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\SwapScreen\UdaPanel.Designer.cs">
+      <DependentUpon>UdaPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\IImageRepository.cs" />
+    <Compile Include="Modules\WallpaperChanger\ImageFetcher.cs" />
+    <Compile Include="Modules\WallpaperChanger\ImageRepository.cs" />
+    <Compile Include="Modules\WallpaperChanger\IProviderFactory.cs" />
+    <Compile Include="Modules\WallpaperChanger\IProviderPersistence.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Bing\BingConfig.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Bing\BingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\Bing\BingForm.Designer.cs">
+      <DependentUpon>BingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\Bing\BingPlugin.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Bing\BingProvider.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Flickr\FlickrConfig.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Flickr\FlickrForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\Flickr\FlickrForm.Designer.cs">
+      <DependentUpon>FlickrForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\Flickr\FlickrPlugin.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Flickr\FlickrProvider.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Flickr\FlickrQuery.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Flickr\NoFlickrApiKeyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\Flickr\NoFlickrApiKeyForm.Designer.cs">
+      <DependentUpon>NoFlickrApiKeyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\List\ListAutoGenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\List\ListAutoGenForm.Designer.cs">
+      <DependentUpon>ListAutoGenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\List\ListManager.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\List\ListProvider.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\List\ListConfig.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\List\ListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\List\ListForm.Designer.cs">
+      <DependentUpon>ListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\LocalDisk\CandidateFilenames.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\LocalDisk\LocalDiskConfig.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\LocalDisk\LocalDiskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\LocalDisk\LocalDiskForm.Designer.cs">
+      <DependentUpon>LocalDiskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\LocalDisk\LocalDiskPlugin.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\LocalDisk\LocalDiskProvider.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\LocalDisk\NumberCycler.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\List\ListPlugin.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\RandomShapes\RandomShapesConfig.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\RandomShapes\RandomShapesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\RandomShapes\RandomShapesForm.Designer.cs">
+      <DependentUpon>RandomShapesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\RandomShapes\RandomShapesPlugin.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\RandomShapes\RandomShapesProvider.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Unsplash\PhotoDetails.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Unsplash\WebScrapeConfig.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Unsplash\WebScrapeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\Unsplash\WebScrapeForm.Designer.cs">
+      <DependentUpon>WebScrapeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\Unsplash\WebScrapePlugin.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Unsplash\WebScrapeProvider.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Url\WebScrapeConfig.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Url\WebScrapeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\Url\WebScrapeForm.Designer.cs">
+      <DependentUpon>WebScrapeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\Plugins\Url\WebScrapePlugin.cs" />
+    <Compile Include="Modules\WallpaperChanger\Plugins\Url\WebScrapeProvider.cs" />
+    <Compile Include="Modules\WallpaperChanger\ProviderFactory.cs" />
+    <Compile Include="Modules\WallpaperChanger\ProviderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\ProviderForm.Designer.cs">
+      <DependentUpon>ProviderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Library\WallpaperPlugin\ProviderImage.cs" />
+    <Compile Include="Modules\WallpaperChanger\ProviderPersistence.cs" />
+    <Compile Include="Modules\WallpaperChanger\ProviderReader.cs" />
+    <Compile Include="Modules\WallpaperChanger\ProviderWriter.cs" />
+    <Compile Include="Modules\WallpaperChanger\UsedImages.cs" />
+    <Compile Include="Modules\WallpaperChanger\WallpaperChangerGeneralOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\WallpaperChangerGeneralOptionsPanel.Designer.cs">
+      <DependentUpon>WallpaperChangerGeneralOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\WallpaperChangerModule.cs" />
+    <Compile Include="Modules\WallpaperChanger\WallpaperChangerPropertiesOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\WallpaperChangerPropertiesOptionsPanel.Designer.cs">
+      <DependentUpon>WallpaperChangerPropertiesOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\WallpaperChangerProvidersOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\WallpaperChangerProvidersOptionsPanel.Designer.cs">
+      <DependentUpon>WallpaperChangerProvidersOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\WallpaperChangerRootOptionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\WallpaperChanger\WallpaperChangerRootOptionsPanel.Designer.cs">
+      <DependentUpon>WallpaperChangerRootOptionsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionsForm.Designer.cs">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="ProgramOptions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AppStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\CommonStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\CursorStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CursorStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\GeneralStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneralStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\LauncherStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LauncherStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\SnapStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SnapStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\SwapScreenStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SwapScreenStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Settings\FileLocations.cs" />
+    <Compile Include="Library\Settings\ISettingsService.cs" />
+    <Compile Include="Library\Settings\SettingsReader.cs" />
+    <Compile Include="Library\Settings\SettingsRepository.cs" />
+    <Compile Include="Library\Settings\SettingsWriter.cs" />
+    <Compile Include="Resources\WallpaperStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WallpaperStrings.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppForm.resx">
+      <DependentUpon>AppForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\HotKeys\HotKeyForm.resx">
+      <DependentUpon>HotKeyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\HotKeys\HotKeyPanel.resx">
+      <DependentUpon>HotKeyPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\HotKeys\KeyComboPanel.resx">
+      <DependentUpon>KeyComboPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\HotKeys\ScrollableHotKeysPanel.resx">
+      <DependentUpon>ScrollableHotKeysPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Cursor\CursorPrimaryOptionsPanel.resx">
+      <DependentUpon>CursorPrimaryOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Cursor\CursorDeadSpaceOptionsPanel.resx">
+      <DependentUpon>CursorDeadSpaceOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Cursor\CursorStickyOptionsPanel.resx">
+      <DependentUpon>CursorStickyOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Cursor\CursorGeneralOptionsPanel.resx">
+      <DependentUpon>CursorGeneralOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Cursor\CursorRootOptionsPanel.resx">
+      <DependentUpon>CursorRootOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\General\EditNumericValueForm.resx">
+      <DependentUpon>EditNumericValueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\General\CheckUpdatesForm.resx">
+      <DependentUpon>CheckUpdatesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\General\GeneralMonitorOrderingOptionsPanel.resx">
+      <DependentUpon>GeneralMonitorOrderingOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\General\GeneralMonitorsOptionsPanel.resx">
+      <DependentUpon>GeneralMonitorsOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\General\GeneralOptionsPanel.resx">
+      <DependentUpon>GeneralOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\General\GeneralRootOptionsPanel.resx">
+      <DependentUpon>GeneralRootOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Launcher\EntryForm.resx">
+      <DependentUpon>EntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Launcher\InternalCommandForm.resx">
+      <DependentUpon>InternalCommandForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Launcher\LauncherHotKeysOptionsPanel.resx">
+      <DependentUpon>LauncherHotKeysOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Launcher\LauncheGeneralOptionsPanel.resx">
+      <DependentUpon>LauncheGeneralOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Launcher\LauncherImportOptionsPanel.resx">
+      <DependentUpon>LauncherImportOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Launcher\LauncherMagicWordsOptionsPanel.resx">
+      <DependentUpon>LauncherMagicWordsOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Launcher\LauncherRootOptionsPanel.resx">
+      <DependentUpon>LauncherRootOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Launcher\MagicWordForm.resx">
+      <DependentUpon>MagicWordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Launcher\ParameterInputForm.resx">
+      <DependentUpon>ParameterInputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Launcher\StartupPositionControl.resx">
+      <DependentUpon>StartupPositionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Snap\SnapForm.resx">
+      <DependentUpon>SnapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Snap\SnapRootOptionsPanel.resx">
+      <DependentUpon>SnapRootOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Snap\SnapGeneralOptionsPanel.resx">
+      <DependentUpon>SnapGeneralOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\SwapScreen\ScrollableUdasPanel.resx">
+      <DependentUpon>ScrollableUdasPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\SwapScreen\SwapScreenActiveOptionsPanel.resx">
+      <DependentUpon>SwapScreenActiveOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\SwapScreen\SwapScreenRootOptionsPanel.resx">
+      <DependentUpon>SwapScreenRootOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\SwapScreen\SwapScreenOtherOptionsPanel.resx">
+      <DependentUpon>SwapScreenOtherOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\SwapScreen\SwapScreenSdaOptionsPanel.resx">
+      <DependentUpon>SwapScreenSdaOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\SwapScreen\SwapScreenUdaOptionsPanel.resx">
+      <DependentUpon>SwapScreenUdaOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\SwapScreen\UdaForm.resx">
+      <DependentUpon>UdaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\SwapScreen\UdaPanel.resx">
+      <DependentUpon>UdaPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\Plugins\Bing\BingForm.resx">
+      <DependentUpon>BingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\Plugins\Flickr\FlickrForm.resx">
+      <DependentUpon>FlickrForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\Plugins\Flickr\NoFlickrApiKeyForm.resx">
+      <DependentUpon>NoFlickrApiKeyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\Plugins\List\ListAutoGenForm.resx">
+      <DependentUpon>ListAutoGenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\Plugins\List\ListForm.resx">
+      <DependentUpon>ListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\Plugins\LocalDisk\LocalDiskForm.resx">
+      <DependentUpon>LocalDiskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\Plugins\RandomShapes\RandomShapesForm.resx">
+      <DependentUpon>RandomShapesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\Plugins\Unsplash\WebScrapeForm.resx">
+      <DependentUpon>WebScrapeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\Plugins\Url\WebScrapeForm.resx">
+      <DependentUpon>WebScrapeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\ProviderForm.resx">
+      <DependentUpon>ProviderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\WallpaperChangerGeneralOptionsPanel.resx">
+      <DependentUpon>WallpaperChangerGeneralOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\WallpaperChangerPropertiesOptionsPanel.resx">
+      <DependentUpon>WallpaperChangerPropertiesOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\WallpaperChangerProvidersOptionsPanel.resx">
+      <DependentUpon>WallpaperChangerProvidersOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WallpaperChanger\WallpaperChangerRootOptionsPanel.resx">
+      <DependentUpon>WallpaperChangerRootOptionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsForm.resx">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Resources\AppStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\CommonStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommonStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\CursorStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CursorStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\GeneralStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GeneralStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\LauncherStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LauncherStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\SnapStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SnapStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\SwapScreenStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SwapScreenStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\WallpaperStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WallpaperStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="Properties\DataSources\DMT.Modules.Launcher.MagicWords.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dual_96_48.png" />
+    <None Include="Resources\PluginImage2.bmp" />
+    <None Include="Resources\PluginImage1.bmp" />
+    <None Include="Resources\DualWallpaperChanger_48_24.png" />
+    <None Include="Resources\PluginImage.bmp" />
+    <None Include="Resources\DualSnap_48_24.png" />
+    <None Include="Resources\dual_48_24.png" />
+    <None Include="Resources\DualLauncher_48_24.png" />
+    <None Include="Resources\cursor_48_24.png" />
+    <None Include="Resources\SwapScreen_48_24.png" />
+    <None Include="Resources\missing.ico" />
+    <None Include="Resources\WinNoCrossHairs.png" />
+    <None Include="Resources\WinCrossHairs.png" />
+    <None Include="Resources\TargetCursor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DMT.ico" />
+    <None Include="Resources\blank_16_16.png" />
+    <None Include="Resources\BingPlugin.bmp" />
+    <Content Include="Resources\cursor_16_16.png" />
+    <Content Include="Resources\DMT_16_16.png" />
+    <Content Include="Resources\DualLauncher_16_16.png" />
+    <Content Include="Resources\DualSnap_16_16.png" />
+    <Content Include="Resources\DualWallpaper_16_16.png" />
+    <None Include="Resources\FlickrPlugin.bmp" />
+    <None Include="Resources\NumPad1.png" />
+    <None Include="Resources\ListPlugin.bmp" />
+    <Content Include="Resources\SwapScreen_16_16.png" />
+    <None Include="Resources\Cursor.ico" />
+    <None Include="Resources\SwapScreen.ico" />
+    <None Include="Resources\WallpaperChanger.ico" />
+    <None Include="Resources\Snap.ico" />
+    <None Include="Resources\Launcher.ico" />
+    <None Include="Resources\General.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
