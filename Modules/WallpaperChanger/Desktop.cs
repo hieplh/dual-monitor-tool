@@ -155,14 +155,25 @@ namespace DMT.Modules.WallpaperChanger
 
 		int CalculateGapSize(Size monitor, List<ImageInWrongMonitor> images)
         {
-			int totalImageWidth = 0;
-
+			int totalImageSize = 0;
+			bool portraitScreen = monitor.Width < monitor.Height;
+			
 			foreach (ImageInWrongMonitor image in images)
             {
-				totalImageWidth += image.Position.Width;
+				// if monitor is portrait, using wallpaper image and separate by height
+				// otherwise, monitor is horizontal, using portrait image and separate by width
+				if (portraitScreen)
+                {
+					totalImageSize += image.Position.Height;
+				} else
+                {
+					totalImageSize += image.Position.Width;
+				}
             }
 
-			return (monitor.Width - totalImageWidth) / (images.Count + 1);
+			return portraitScreen 
+				? (monitor.Height - totalImageSize) / (images.Count + 1) 
+				: (monitor.Width - totalImageSize) / (images.Count + 1);
 		}
 
 		void UpdateFullWallpaper(SwitchType.ImageToMonitorMapping monitorMapping, IWallpaperCompositor compositor)
@@ -189,7 +200,7 @@ namespace DMT.Modules.WallpaperChanger
 						IImageProvider provider = _imageRepository.GetProvider(optimumSize, i);
 						if (provider.Config.TryGetValue("monitor2K", out monitor2K) && monitor2K == "True")
                         {
-							if (optimumSize.Width > 2000)
+							if (optimumSize.Width > 2000 || optimumSize.Height > 2000)
 							{
 								ProviderImage sourceImage2 = imageFetcher.GetRandomImageForScreen(compositor, i);
 								Bitmap combinedImage = new Bitmap(optimumSize.Width, optimumSize.Height);
@@ -203,16 +214,25 @@ namespace DMT.Modules.WallpaperChanger
 									g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
 									g.Clear(Color.Black);
 
-									int sliderWidth = 0;
+									int slider = 0;
 									int gapsize = CalculateGapSize(optimumSize, imageInWrongs);
+									bool portraitScreen = optimumSize.Width < optimumSize.Height;
 									foreach (ImageInWrongMonitor image in imageInWrongs)
                                     {
-										sliderWidth += gapsize;
+										slider += gapsize;
 										Rectangle rectangle = image.Position;
-										rectangle.X += sliderWidth;
+										if (portraitScreen)
+                                        {
+											rectangle.Y += slider;
+											slider += image.Position.Height;
+										} else
+                                        {
+											rectangle.X += slider;
+											slider += image.Position.Width;
+										}
+
 										image.Position = rectangle;
 										g.DrawImage(image.Image, image.Position);
-										sliderWidth += image.Position.Width;
 									}
 									g.Dispose();
 								}

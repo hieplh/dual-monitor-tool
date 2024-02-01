@@ -252,7 +252,7 @@ namespace DMT.Modules.WallpaperChanger.Plugins.LocalDisk
 			{
 				if (_config.Monitor2K)
                 {
-					if (optimumSize.Width > 2000)
+					if (optimumSize.Width > 2000 && optimumSize.Width > optimumSize.Height)
 					{
 						// ideally want a portrait image
 						ret = _portraitCache.GetNextImageFilename();
